@@ -28,6 +28,7 @@ Six constructs, mapped to items as analyzed in the paper (Table with
 construct-level statistics):
 
 **Accuracy & Faithfulness** (items 1–6, $\alpha = .84$)
+
 1. The assistant's responses were accurate given my documents.
 2. The assistant correctly attributed information to the right source or section.
 3. The assistant preserved important nuances and qualifications from my documents.
@@ -36,6 +37,7 @@ construct-level statistics):
 6. The assistant avoided generating information not present in my documents.
 
 **Trust & Reliability** (items 7–11, $\alpha = .79$)
+
 7. I felt I could trust the assistant's outputs.
 8. The assistant's tone of confidence matched the quality of its answers.
 9. I could tell when the assistant was uncertain or guessing.
@@ -43,6 +45,7 @@ construct-level statistics):
 11. The assistant's handling of ambiguous or edge-case questions was appropriate.
 
 **Perceived Usefulness** (items 12–17, $\alpha = .67$)
+
 12. The assistant would be useful in my real computing-education work.
 13. The assistant saved me time compared to my usual approach.
 14. The assistant helped me think about my documents in new ways.
@@ -51,6 +54,7 @@ construct-level statistics):
 17. I would recommend this tool to a colleague in computing education.
 
 **Response Quality** (items 18–22, $\alpha = .49$)
+
 18. The assistant's responses were clear and well-organized.
 19. The assistant used appropriate technical vocabulary for computing topics.
 20. The assistant's level of detail was appropriate for my needs.
@@ -58,12 +62,14 @@ construct-level statistics):
 22. The amount of context the assistant used in responses was appropriate.
 
 **Pedagogical Suitability** (items 23–26, $\alpha = .52$)
+
 23. The assistant's explanations would be appropriate for my students' level.
 24. The assistant respected pedagogical intent (e.g., didn't give away answers meant for discovery).
 25. The assistant could support scaffolding or guided inquiry in computing.
 26. I would trust the assistant to interact directly with students using my materials.
 
 **Privacy & Data Comfort** (items 27–30, $\alpha = .47$)
+
 27. I felt comfortable uploading my computing-education documents to this system.
 28. Knowing data stays on my device (local-first) increases my willingness to use it.
 29. This tool would be compatible with my institution's policies on AI use.
