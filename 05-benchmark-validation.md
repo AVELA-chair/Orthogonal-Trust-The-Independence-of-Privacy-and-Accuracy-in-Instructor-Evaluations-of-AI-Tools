@@ -222,7 +222,7 @@ rests on a scale collapse with κ = 0.765 pooled, whereas the "Yes"
 contrast rests on the one category where human and automated raters
 agree at chance (§D.2.4).
 
-The 12.7-fold improvement reported in the main text was calculated from the 
+The 12.4-fold improvement reported in the main text was calculated from the 
 proportion of responses receiving a “Yes” rating in the complete automated 
 benchmark. Ratios calculated from the smaller human-validation sample differ 
 because of sampling variation, uneven human-review coverage, and differences 
