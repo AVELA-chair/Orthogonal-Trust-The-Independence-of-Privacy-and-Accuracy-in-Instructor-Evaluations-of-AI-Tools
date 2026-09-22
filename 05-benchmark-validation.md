@@ -62,7 +62,7 @@ structural fact accounts for the bulk of the disagreement documented in
 
 ### D.2.1 Sample and exclusion flow
 
-Human validation was conducted on an available subset of 960 responses 
+Human validation was conducted on an available subset of 1,140 responses 
 drawn from a stratified random sample of 1,199 model outputs. The 
 reviewed subset comprised 390 BLUECOMPUTER.2 responses, 388 
 Qwen2.5-1.5B-Instruct responses, and 182 general.2 responses.
@@ -70,9 +70,9 @@ Qwen2.5-1.5B-Instruct responses, and 182 general.2 responses.
 | Step | n |
 |---|---|
 | Responses in grading sample | 1,199 |
-| Human guidance label supplied | 960 |
-| Automated label returned `error` | −5 |
-| **Analytic n** | **955** |
+| Human guidance label supplied | 1,140 |
+| Automated label returned `error` | −5 API overload errors  |
+| **Analytic n** | **1,135** |
 
 Human correctness marks were supplied for 948 responses; 947 had a valid
 automated counterpart.
@@ -83,7 +83,7 @@ Coverage was not uniform across models:
 |---|---|---|---|
 | BLUECOMPUTER.2 (constrained variant) | 400 | 390 | 97.5% |
 | Qwen2.5-1.5B-Instruct (base) | 400 | 388 | 97.0% |
-| general.2 (TOOL) | 399 | 182 | 45.6% |
+| general.2 (TOOL) | 399 | 362 | 90.7% |
 
 For the initial automated evaluation, 955 responses had both a 
 human rating and a valid automated rating; five automated outputs 
@@ -100,12 +100,12 @@ exact guidance-label proportions observed across the complete
 
 | Comparison | n | Exact | κ | 95% CI | Linear-wtd κ | Quadratic-wtd κ | Gwet's AC1 |
 |---|---|---|---|---|---|---|---|
-| **All models pooled** | 955 | 79.9% | 0.622 | [0.580, 0.667] | 0.646 | 0.684 | 0.727 |
-| Qwen2.5-1.5B-Instruct | 386 | 94.8% | 0.897 | [0.854, 0.938] | 0.901 | 0.908 | 0.931 |
-| general.2 (TOOL) | 179 | 68.2% | 0.417 | [0.305, 0.529] | 0.458 | 0.521 | 0.567 |
-| BLUECOMPUTER.2 | 390 | 70.5% | 0.327 | [0.231, 0.415] | 0.369 | 0.440 | 0.624 |
-| Conditional: answer incorrect | 503 | 81.5% | 0.624 | [0.556, 0.690] | 0.633 | 0.650 | 0.756 |
-| Conditional: answer correct | 452 | 78.1% | 0.616 | [0.552, 0.678] | 0.654 | 0.710 | 0.694 |
+| **All models pooled** | 1,135 | 75.1% | 0.544 | 0.585 | 0.647 | 0.657 |
+| Qwen2.5-1.5B-Instruct | 386 | 94.8% | 0.897 | [0.853, 0.937] | 0.901 | 0.908 | 0.931 |
+| general.2 (TOOL) | 359 | 58.8% | 0.249 | [0.166, 0.366] | 0.330 | 0.447 | 0.434 |
+| BLUECOMPUTER.2 | 390 | 70.5% | 0.327 | [0.230, 0.420] | 0.369 | 0.440 | 0.624 |
+| Conditional: answer incorrect | 554 | 81.4% | 0.607 | [0.540, 0.675] | 0.617 | 0.637 | 0.757 |
+| Conditional: answer correct | 564 | 68.3% | 0.475 | [0.411, 0.537] | 0.548 | 0.644 | 0.547 |
 
 Because the three guidance categories are ordinal, we additionally 
 report linear-weighted Cohen’s \(\kappa\), which assigns less weight 
@@ -119,64 +119,62 @@ outright.
 
 Pooled agreement is materially higher than agreement on either
 fine-tuned model. Averaging the three per-model κ values with equal
-weight gives 0.547, against the pooled 0.622: the pooled figure is
+weight gives 0.544, against the pooled 0.584: the pooled figure is
 lifted by the base model, whose outputs are predominantly answer-only
 and therefore trivially classified. Per-model figures should be read in
 preference to the pooled row.
 
 ### D.2.3 Confusion matrix
 
-Rows are human labels, columns automated (n = 955):
+Rows are human labels, columns automated (n = 1,135):
 
 | | No | To some extent | Yes | Total |
 |---|---|---|---|---|
-| **No** | 316 | 20 | 0 | 336 |
-| **To some extent** | 86 | 443 | 45 | 574 |
-| **Yes** | 1 | 40 | 4 | 45 |
-| **Total** | 403 | 503 | 49 | 955 |
+| **No** | 314 | 44 | 1 | 359 |
+| **To some extent** | 89 | 517 | 98 | 704 |
+| **Yes** | 0 | 51 | 21 | 72 |
+| **Total** | 403 | 612 | 120 | 1,135 |
 
 ### D.2.4 Category-level agreement
 
 | Label | n (human) | n (automated) | Agreed | Recall | Precision |
 |---|---|---|---|---|---|
-| No | 336 | 403 | 316 | 0.940 | 0.784 |
-| To some extent | 574 | 503 | 443 | 0.772 | 0.881 |
-| **Yes** | **45** | **49** | **4** | **0.089** | **0.082** |
+| No | 359 | 403 | 314 | 0.875 | 0.779 |
+| To some extent | 704 | 612 | 517 | 0.734 | 0.845 |
+| **Yes** | **72** | **120** | **21** | **0.292** | **0.175** |
 
-Agreement on "No" and "To some extent" is strong. Agreement on "Yes" 
-was very low: of 45 responses humans rated Yes, the automated evaluator
-concurred on 4; of 49 it rated Yes, humans concurred on 4. Pooled κ
-conceals this because "Yes" constitutes only 4.7% of human labels.
-
-Collapsing the scale to a binary — any meaningful guidance versus
-answer-only — yields substantially better agreement, because that
-contrast does not depend on the disclosure rule:
+Agreement on “Yes” remained substantially weaker than agreement on the 
+other categories. The automated evaluator identified only 21 of the 72 
+human “Yes” ratings and humans confirmed only 21 of the evaluator’s 120 
+“Yes” ratings. Collapsing the scale to a binary — any meaningful 
+guidance versus answer-only — yields substantially better agreement, 
+because that contrast does not depend on the disclosure rule:
 
 | Model | n | Exact | κ |
 |---|---|---|---|
-| All pooled | 955 | 88.8% | 0.765 |
-| Qwen2.5-1.5B-Instruct | 386 | 97.9% | 0.958 |
-| general.2 (TOOL) | 179 | 78.2% | 0.556 |
+| All pooled | 1,135 | 88.2% | 0.736 |
+| Qwen2.5-1.5B-Instruct | 386 | 97.9% | 0.957 |
+| general.2 (TOOL) | 359 | 81.6% | 0.466 |
 | BLUECOMPUTER.2 | 390 | 84.6% | 0.522 |
 
 ### D.2.5 Directional bias
 
-The automated evaluator assigned lower ratings than the human reviewers 
-in 127 of the 192 disagreements and higher ratings in 65. This 
-asymmetry was concentrated in general.2, for which the human rating was 
-higher in 56 of 57 disagreements. Ratings for BLUECOMPUTER.2 were 
-approximately balanced in direction.
+For the original content-focused evaluation, disagreement direction was
+nearly balanced: Claude assigned a lower category than the human reviewer
+in 140 cases and a higher category in 143 cases.
 
-Because the stricter human criteria generally assigned *higher* ratings
-than the content-focused automated evaluator, These results indicate 
-systematic evaluator differences, particularly for general.2; consequently, 
-human and automated ratings are reported separately.
+The revised pedagogy-focused evaluator was systematically more
+conservative. It assigned a lower category than the human reviewer in
+395 cases and a higher category in 49 cases. Ten disagreements crossed
+directly between “No” and “Yes”; the remaining disagreements involved
+adjacent categories.
 
 ### D.2.6 Correctness parsing
 
-Human correctness marks agreed with the automated `ANSWER: X` parse on
-920 of 947 responses (97.1%; 27 disagreements), supporting the
-extraction used throughout the benchmark.
+Usable human correctness marks were available for 1,126 responses.
+Human correctness judgments agreed with the automated answer parse on
+1,026 responses (91.1%), with 100 disagreements. Seventy-two correctness
+cells were blank, and one ambiguous entry (`TRUE/FLASE`) was excluded.
 
 ## D.3 MMLU Knowledge-Preservation Check
 
@@ -207,14 +205,14 @@ Guidance improvement over the base model, on the 1,199-response sample:
 
 | Model | "Yes" (auto) | Ratio | "Yes" (human) | Ratio | Any guidance (human) | Ratio |
 |---|---|---|---|---|---|---|
-| Qwen2.5-1.5B-Instruct | 0.018 | 1.00 | 0.018 | 1.00 | 0.433 | 1.00 |
-| general.2 (TOOL) | 0.192 | 10.9 | 0.104 | 5.8 | 0.714 | 1.65 |
-| BLUECOMPUTER.2 | 0.108 | 6.1 | 0.049 | 2.7 | 0.828 | 1.91 |
+| Qwen2.5-1.5B-Instruct | 0.0175 | 1.00 | 0.018 | 1.00 | 0.433 | 1.00 |
+| general.2 (TOOL) | 0.1905 | 10.88 | 0.1271 | 7.04 | 0.793 | 1.83 |
+| BLUECOMPUTER.2 | 0.1075 | 6.14 | 0.0487 | 2.7 | 0.828 | 1.91 |
 
 TOOL versus base, human labels, Fisher's exact test:
 
-- Any meaningful guidance: 130/182 (71.4%) vs 168/388 (43.3%); ratio 1.65, p = 3.8 × 10⁻¹⁰
-- "Yes" rating: 19/182 (10.4%) vs 7/388 (1.8%); ratio 5.79, p = 1.3 × 10⁻⁵
+- Any meaningful guidance: 286/362 = (79.3%) vs 168/388 (43.3%); ratio 1.83, p = 1.66 × 10⁻²⁴
+- "Yes" rating: 46/362 = (12.7%) vs 7/388 (1.8%); ratio 7.04, p = 1.99 × 10⁻⁹
 
 Both contrasts are significant and both favor the fine-tuned model. They
 differ in how well the validation supports them: the binary contrast
@@ -232,14 +230,17 @@ estimate.
 
 ## D.5 Limitations of This Validation
 
-1. **Uneven coverage.** Human labels cover 97.5% of BLUECOMPUTER.2 and
-   97.0% of the base model but only 45.6% of TOOL. Pooled statistics are
-   therefore weighted away from the system the paper evaluates.
-2. **Rubric divergence.** The human instrument penalizes answer
-   disclosure; the content-focused automated rubric does not. Since only
-   27.4% of responses place the answer solely in the final line
-   (§D.1.2), the reported agreement conflates rater disagreement with
-   criterion divergence. It is a lower bound on achievable agreement
-   between raters applying the same rubric.
-3. **"Yes" agreement is at chance**, and the benchmark headline is a
-   ratio of "Yes" rates.
+1. **Incomplete human coverage.** Human guidance labels were available
+   for 95.1% of the sampled responses. Missing labels were concentrated
+   in general.2 (37 missing), compared with 10 for BLUECOMPUTER.2 and
+   12 for Qwen.
+2. **Rubric divergence.** Human reviewers applied the pedagogy-focused
+   disclosure rule, whereas the original automated evaluation emphasized
+   conceptual content. Their agreement therefore measures both rating
+   consistency and differences between the rubrics. The revised Claude
+   evaluation more closely matched the human rubric but applied it more
+   conservatively.
+3. **Rare top category.** Only 72 comparable responses received a human
+   “Yes” rating. Class-specific conclusions about “Yes” are therefore
+   less stable than conclusions about the broader distinction between
+   meaningful guidance and no guidance.
