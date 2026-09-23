@@ -1,8 +1,5 @@
 # 06 — Human Grading Sample 
 
-All 1199 responses in the human grading sample, with the rater's
-guidance label and correctness mark.
-
 Raters judged the **guidance**, not the final answer letter:
 
 - **Yes** — relevant, factually correct, substantive reasoning, with the selected option appearing only in the separate `ANSWER: X` line
