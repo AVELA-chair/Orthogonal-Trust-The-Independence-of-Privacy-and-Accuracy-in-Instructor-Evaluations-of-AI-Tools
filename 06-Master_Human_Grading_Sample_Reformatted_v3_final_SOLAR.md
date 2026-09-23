@@ -1,4 +1,4 @@
-# 06 — Human Grading Sample 
+# Human Grading Sample 
 
 Raters judged the guidance, not the final answer letter:
 
