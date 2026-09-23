@@ -1,6 +1,6 @@
 # 06 — Human Grading Sample 
 
-Raters judged the **guidance**, not the final answer letter:
+Raters judged the guidance, not the final answer letter:
 
 - **Yes** — relevant, factually correct, substantive reasoning, with the selected option appearing only in the separate `ANSWER: X` line
 - **To some extent** — meaningful correct guidance present, but the answer is disclosed inside the reasoning, part of the explanation is wrong, or the response drifts into an unrelated item
