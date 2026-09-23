@@ -1,4 +1,4 @@
-# 06 — Human Grading Sample (full record)
+# 06 — Human Grading Sample 
 
 All 1199 responses in the human grading sample, with the rater's
 guidance label and correctness mark.
