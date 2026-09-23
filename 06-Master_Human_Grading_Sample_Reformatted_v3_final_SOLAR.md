@@ -1,5 +1,7 @@
 # Human Grading Sample 
 
+**How to read this document.** Each entry below is one model response, with any markdown the model emitted. The field table gives the model that produced it, the source file and item index, the gold answer, the option parsed from the response, whether that option was correct, and the rater's guidance label. The question and response follow in fixed-width blocks. 
+
 Raters judged the guidance, not the final answer letter:
 
 - **Yes** — relevant, factually correct, substantive reasoning, with the selected option appearing only in the separate `ANSWER: X` line
