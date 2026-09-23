@@ -223,7 +223,7 @@ agree at chance (§D.2.4).
 | Model | Total attempted | Evaluator errors | Valid evaluations | Automated “Yes,” n | Automated “Yes” rate | Ratio vs. Qwen |
 |---|---:|---:|---:|---:|---:|---:|
 | Qwen2.5-1.5B-Instruct | 14,042 | 66 | 13,976 | 217 | 0.0155 (1.55%) | 1.00 |
-| general.2 (\tool{}) | 14,042 | 120 | 13,922 | 2,677 | 0.1923 (19.23%) | 12.38 |
+| general.2 (TOOL) | 14,042 | 120 | 13,922 | 2,677 | 0.1923 (19.23%) | 12.38 |
 | BLUECOMPUTER.2 | 14,042 | 0 | 14,042 | 1,506 | 0.1072 (10.72%) | 6.91 |
 
 The 12.4-fold improvement reported in the main text was calculated from the 
